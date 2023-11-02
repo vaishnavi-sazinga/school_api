@@ -11,14 +11,15 @@ export const handleCreateQuestion = async (
     res: Response,
     next: NextFunction
 ) => {
-    const { question, answer } = req.body;
+    const { question, answer, schoolId } = req.body;
     try {
         const user = await requestedUserDetails(req)
         const response = await Question.create({
             question,
             answer,
             createdBy: user?.id,
-            updatedBy: user?.id
+            updatedBy: user?.id,
+            schoolId
         });
         res.status(200).json(response);
     } catch (ex) {
@@ -32,7 +33,9 @@ export const handleGetQuestions = async (
     next: NextFunction
 ) => {
     try {
+        const { schoolId } = req.body;
         const response = await Question.findAll({
+            where: { schoolId },
             include: [{
                 model: Answer,
                 include: {

@@ -9,14 +9,15 @@ export const handleCreateAnswer = async (
     res: Response,
     next: NextFunction
 ) => {
-    const { questionId, answer } = req.body;
+    const { questionId, answer, schoolId } = req.body;
     try {
         const user = await requestedUserDetails(req)
         const response = await Answer.create({
             questionId,
             answer,
             createdBy: user?.id,
-            updatedBy: user?.id
+            updatedBy: user?.id,
+            schoolId
         });
         res.status(200).json(response);
     } catch (ex) {

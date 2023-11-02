@@ -18,6 +18,9 @@ const AnswerModel = (sequelize: Sequelize, _Sequelize: any) => {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
+            schoolId: {
+                type: DataTypes.STRING,
+            },
             ...auditColumns,
         }
     );

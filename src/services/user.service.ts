@@ -32,7 +32,7 @@ export const getUser = async (filter: WhereOptions) =>
         where: filter,
     });
 
-export const getUserByEmailId = async (email: string, phoneNumber: string, uuid: any) => {
+export const getUserByEmailId = async (email: any, phoneNumber: any, uuid: any) => {
     let user = await User.findOne({
         where: { uuid }
     });
