@@ -34,7 +34,7 @@ export const getUser = async (filter: WhereOptions) =>
 
 export const getUserByEmailId = async (email: any, phoneNumber: any, uuid: any) => {
     let user = await User.findOne({
-        where: { uuid }
+        where: { uuid }, raw: true
     });
     if (!user) {
         // If the user does not exist, create a new one
