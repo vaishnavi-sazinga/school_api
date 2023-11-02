@@ -32,16 +32,26 @@ export const getUser = async (filter: WhereOptions) =>
         where: filter,
     });
 
-export const getUserByEmailId = async (email: string, phoneNumber: string, uuid: any) =>
-    await User.findOne({
+export const getUserByEmailId = async (email: string, phoneNumber: string, uuid: any) => {
+    const [user, created] = await User.findOrCreate({
         where: {
             [Op.or]: [
-                { email }, // Check if email matches
-                { phoneNumber }, // Check if phonenumber matches
-                { uuid }, // Check if uuid matches
+                { email },
+                { phoneNumber },
+                { uuid },
             ],
         },
+        defaults: {
+            email,
+            phoneNumber,
+            uuid
+        },
     });
+
+    return user;
+};
+
+
 
 export const findOrCreateUser = async (filter: WhereOptions) =>
     await User.findOrCreate({ where: filter });
