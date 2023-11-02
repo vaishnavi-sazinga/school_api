@@ -13,12 +13,10 @@ const UserModel = (sequelize: Sequelize, _Sequelize: any) => {
             },
             email: {
                 type: DataTypes.STRING,
-                unique: true,
                 allowNull: true,
             },
             phoneNumber: {
                 type: DataTypes.STRING,
-                unique: true,
                 allowNull: true,
             },
             schoolId: {
