@@ -33,7 +33,7 @@ export const handleGetQuestions = async (
     next: NextFunction
 ) => {
     try {
-        const { schoolId } = req.params;
+        const { schoolId } = req.body;
         const response = await Question.findAll({
             where: { schoolId },
             include: [{

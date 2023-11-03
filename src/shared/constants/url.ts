@@ -13,7 +13,7 @@ export const ROUTES = {
     PING: '/ping',
     TOKEN: '/token',
     ADD: '/add',
-    GET: '/get/:schoolId',
+    GET: '/get',
     OTP_VERIFY: '/otp/verify',
     TOKEN_REFRESH: '/token/refresh',
 };
