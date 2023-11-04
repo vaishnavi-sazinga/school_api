@@ -33,9 +33,10 @@ export const handleGetQuestions = async (
     next: NextFunction
 ) => {
     try {
-        const { schoolId } = req.body;
+        const { schoolId } = req.query;
+        const where = schoolId ? { schoolId } : '';
         const response = await Question.findAll({
-            where: { schoolId },
+            where,
             include: [{
                 model: Answer,
                 include: {
